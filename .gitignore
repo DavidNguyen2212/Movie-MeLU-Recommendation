@@ -1,0 +1,127 @@
+# Byte-compiled / optimized / compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+multi_result_files/
+
+# Environment
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and debugging files
+*.log
+*.out
+*.err
+
+# Python virtual environment
+*.pyenv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test and coverage files
+.coverage
+.tox/
+.nox/
+*.coverage.*
+.cache
+pytest_cache/
+hypothesis/
+
+# Data files
+*.csv
+*.h5
+*.hdf5
+*.npz
+*.parquet
+*.db
+*.sqlite
+*.tar.gz
+*.zip
+*.pkl
+*.joblib
+*.jsonl
+data/
+datasets/
+
+# TensorFlow / PyTorch / Machine Learning files
+checkpoint
+checkpoints/
+*.ckpt
+*.pb
+*.onnx
+*.tflite
+*.lite
+*.mlmodel
+*.pkl
+*.pt
+*.weights
+*.h5
+saved_model/
+
+# Large data and outputs
+logs/
+results/
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.mp4
+*.webm
+*.wav
+*.mp3
+
+# Model weights and parameters
+models/
+*.pth
+*.ckpt
+*.model
+*.pbtxt
+
+# Compiled Cython files
+*.c
+*.so
+
+# Notebook outputs
+*.ipynb
+output/
+
+# VSCode and PyCharm settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build files
+build/
+dist/
+*.egg-info/
+.eggs/
+*.whl
+*.manifest
+*.spec
+
+# Docker files
+*.pid
+*.tar
+*.dockerignore
+
+# Temporary and other files
+*.bak
+*.swp
+*.tmp
+*.temp
+*.log
+~$*
