@@ -1,7 +1,9 @@
+from typing import Optional, Any
 import torch
+from torchtyping import TensorType
 
 class Item(torch.nn.Module):
-    def __init__(self, config):
+    def __init__(self, config: Any):
         super(Item, self).__init__()
         self.num_rate = config.num_rate
         self.num_genre = config.num_genre
@@ -32,9 +34,22 @@ class Item(torch.nn.Module):
             bias=False
         )
 
-    def forward(self, rate_idx, genre_idx, director_idx, actors_idx, vars=None):
+    def forward(self, 
+        rate_idx: TensorType["batch_size", int], 
+        genre_idx: TensorType["batch_size", "num_genre"], 
+        director_idx: TensorType["batch_size", "num_director"], 
+        actors_idx: TensorType["batch_size", "num_actor"], 
+        vars: Optional[Any]=None) -> TensorType["batch_size", "concat_dim"]:
+        """
+        The forward method of class Item.
+        Return a concatenated tensor of size ["batch_size", "concat_dim"],
+        where concat_dim = embedding_dim * 4
+        """
+        # Embedding for rate (lookup table)
         rate_emb = self.embedding_rate(rate_idx)
+        # Embedding (linear transformation and normalization)
         genre_emb = self.embedding_genre(genre_idx.float()) / torch.sum(genre_idx.float(), 1).view(-1, 1)
         director_emb = self.embedding_director(director_idx.float()) / torch.sum(director_idx.float(), 1).view(-1, 1)
         actors_emb = self.embedding_actor(actors_idx.float()) / torch.sum(actors_idx.float(), 1).view(-1, 1)
+
         return torch.cat((rate_emb, genre_emb, director_emb, actors_emb), 1)

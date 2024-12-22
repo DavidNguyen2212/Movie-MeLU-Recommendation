@@ -27,7 +27,6 @@ def parse_args():
 
     parser.add_argument('--lr_inner', type=float, default=0.01, help='inner-loop learning rate (per task)')
     parser.add_argument('--lr_meta', type=float, default=1e-3, help='outer-loop learning rate (used with Adam optimiser)')
-    # parser.add_argument('--lr_meta_decay', type=float, default=0.9, help='decay factor for meta learning rate')
 
     parser.add_argument('--num_grad_steps_inner', type=int, default=5, help='number of gradient steps in inner loop (during training)')
     parser.add_argument('--num_grad_steps_eval', type=int, default=1, help='number of gradient updates at test time (for evaluation)')
@@ -84,7 +83,6 @@ def run(args, num_workers=1, log_interval=100, verbose=True, save_path=None):
     print(sum([param.nelement() for param in model.parameters()]))
     # set up meta-optimiser for model parameters
     meta_optimiser = torch.optim.Adam(model.parameters(), args.lr_meta)
-    # scheduler = torch.optim.lr_scheduler.StepLR(meta_optimiser, 5000, args.lr_meta_decay)
 
     # initialise logger
     logger = Logger()
